@@ -23,6 +23,7 @@ export const UserSchema = new Schema({
     phone: {
         type: String,
         required: false,
+        validate: /\d{3}-\d{3}-\d{4}/,
     }
 });
 
