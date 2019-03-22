@@ -10,9 +10,9 @@ router.post('/', async (req: Request, res: Response) => {
     res.send(user);
 });
 
-router.get('/:userId', async (req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response) => {
     let { userId } = req.params;
-    const user = await UserRepository.get(userId);
+    const user = await UserEventRepository.getAll();
 
     res.send(user);
 });
@@ -28,11 +28,4 @@ router.post('/:userId/events', async (req: Request, res: Response) => {
     res.send(userEvent);
 });
 
-router.get('/:userId/events', async (req: Request, res: Response) => {
-    let { userId } = req.params;
-
-    const events = await UserEventRepository.getAll({userId});
-    res.send(events);
-});
-
-export const UsersController: Router = router;
+export const UserEventsController: Router = router;

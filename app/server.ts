@@ -29,6 +29,7 @@ mongod.getConnectionString().then((mongoUri) => {
 });
 
 import { UsersController } from './controllers/api/UsersController';
+import { UserEventsController } from './controllers/api/UserEventsController';
 
 const app: express.Application = express();
 const port: number = 4004;
@@ -37,6 +38,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/users', UsersController);
+app.use('/api/events', UserEventsController);
 
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}/`);
