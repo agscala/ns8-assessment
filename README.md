@@ -29,8 +29,11 @@ GET  /api/users/:userId/events
 ## Notes
 **MongoDB:** Since NS8 uses mongo, I chose mongo for this project despite not being a requirement.
 It uses an in-memory implementation on mongo for simplicity.
+
 **TypeScript:** This is my first experience with typescript, though I've used modern javascript otherwise. I've used C# a lot at my current job and C/C++ in past jobs, so statically typed languages aren't new to me.  Overall, it was pleasant to use. The compiler caught some bugs at compile time instead of runtime which was nice.
+
 **BCrypt:** Passwords are strongly hashed for the heck of it.  It was pretty simple to hash them in a pre-save hook with mongoose.
+
 **Query Filtering:** The `/api/events` resource allows you to specify a start and end date.  The requirements mentioned being able to query for events that happened in the past 24 hours, but this is more flexible.
 
 ## Future Considerations
