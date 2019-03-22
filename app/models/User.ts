@@ -1,16 +1,16 @@
 import { model, Document, Schema } from 'mongoose';
 
 export interface IUser {
-    name: string;
+    email: string;
     password: string;
-    phoneNumber?: string;
+    phone?: string;
 }
 
 export interface IUserDocument extends IUser, Document {
 };
 
 export const UserSchema = new Schema({
-    name: {
+    email: {
         type: String,
         required: true,
     },
@@ -18,7 +18,7 @@ export const UserSchema = new Schema({
         type: String,
         required: true,
     },
-    phoneNumber: {
+    phone: {
         type: String,
         required: false,
     }

@@ -6,7 +6,11 @@ import UserRepository from '../../repositories/UserRepository';
 import UserEventRepository from '../../repositories/UserEventRepository';
 
 router.post('/', async (req: Request, res: Response) => {
-    const user: IUser = await UserRepository.create({ name: req.body.name, password: req.body.password});
+    const user: IUser = await UserRepository.create({
+        email: req.body.email,
+        password: req.body.password,
+        phone: req.body.phone,
+    });
     res.send(user);
 });
 
