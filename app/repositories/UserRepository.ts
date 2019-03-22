@@ -11,6 +11,11 @@ class UserRepository {
 
         return user;
     }
+
+    public async get (id: String) : Promise<IUser | null> {
+        const user = await User.findById(id).exec();
+        return user;
+    }
 }
 
 export default new UserRepository();

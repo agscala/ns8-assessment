@@ -9,10 +9,11 @@ router.get('/', async (req: Request, res: Response) => {
     res.send(user);
 });
 
-router.get('/:name', (req: Request, res: Response) => {
-    let { name } = req.params;
+router.get('/:id', async (req: Request, res: Response) => {
+    let { id } = req.params;
+    const user = await UserRepository.get(id);
 
-    res.send(`Hello, ${name}`);
+    res.send(user);
 });
 
 export const UsersController: Router = router;
