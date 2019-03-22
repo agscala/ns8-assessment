@@ -22,13 +22,17 @@ router.post('/:userId/events', async (req: Request, res: Response) => {
 
     const userEvent = await UserEventRepository.create({
         user: userId,
-        type: "TEST",
+        type: req.body.type,
     });
 
     res.send(userEvent);
 });
 
 router.get('/:userId/events', async (req: Request, res: Response) => {
+    let { userId } = req.params;
+
+    const events = await UserEventRepository.getByUser(userId);
+    res.send(events);
 });
 
 export const UsersController: Router = router;
