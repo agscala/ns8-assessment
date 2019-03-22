@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import MongoMemoryServer from 'mongodb-memory-server';
+import bodyParser from 'body-parser';
 
 const mongod = new MongoMemoryServer();
 mongoose.Promise = Promise;
@@ -31,6 +32,9 @@ import { UsersController } from './controllers/api/UsersController';
 
 const app: express.Application = express();
 const port: number = 4004;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/users', UsersController);
 
