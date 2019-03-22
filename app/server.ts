@@ -13,6 +13,7 @@ mongod.getConnectionString().then((mongoUri) => {
         useNewUrlParser: true,
     };
 
+    mongoose.set('useCreateIndex', true);
     mongoose.connect(mongoUri, mongooseOpts);
 
     mongoose.connection.on('error', (e) => {
