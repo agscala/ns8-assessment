@@ -1,0 +1,73 @@
+{
+	"variables": [],
+	"info": {
+		"name": "NS8 Assessment",
+		"_postman_id": "6add19e0-af91-5e68-eb45-501aebee4770",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New User",
+			"request": {
+				"url": "localhost:4004/api/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"test@ns8.com\",\r\n  \"password\": \"passwordIsPizza\",\r\n  \"phone\": \"333-222-1111\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"url": "localhost:4004/api/users/5c956142039b360cdade427a",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "New Event For User",
+			"request": {
+				"url": "localhost:4004/api/users/5c956142039b360cdade427a/events",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"LOGIN\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Events For User",
+			"request": {
+				"url": "localhost:4004/api/users/5c956142039b360cdade427a/events",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
