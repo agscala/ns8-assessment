@@ -9,17 +9,17 @@ router.get('/', async (req: Request, res: Response) => {
     res.send(user);
 });
 
-router.get('/:id', async (req: Request, res: Response) => {
-    let { id } = req.params;
-    const user = await UserRepository.get(id);
+router.get('/:userId', async (req: Request, res: Response) => {
+    let { userId } = req.params;
+    const user = await UserRepository.get(userId);
 
     res.send(user);
 });
 
-router.post('/:id/events', async (req: Request, res: Response) => {
+router.post('/:userId/events', async (req: Request, res: Response) => {
 });
 
-router.get('/:id/events', async (req: Request, res: Response) => {
+router.get('/:userId/events', async (req: Request, res: Response) => {
 });
 
 export const UsersController: Router = router;
