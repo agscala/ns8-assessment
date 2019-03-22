@@ -16,4 +16,10 @@ router.get('/:id', async (req: Request, res: Response) => {
     res.send(user);
 });
 
+router.post('/:id/events', async (req: Request, res: Response) => {
+});
+
+router.get('/:id/events', async (req: Request, res: Response) => {
+});
+
 export const UsersController: Router = router;
