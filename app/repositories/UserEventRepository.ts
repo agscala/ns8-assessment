@@ -12,22 +12,26 @@ class UserEventRepository {
 
 
     public async getAll(filter: IUserEventFilter = {}) : Promise<Array<IUserEvent>> {
-        let query = UserEvent.find({})
+        let query: any = {}
 
         if (filter !== {}) {
 
-            if (filter.userId !== null)
-                query = query.find({user: filter.userId});
+            if (filter.userId)
+                query.user = filter.userId;
 
-            if (filter.dateStart !== null)
-                query = query.find({"created": {"$gte": filter.dateStart}});
+            if (filter.dateStart) {
+                query.created = query.created || {};
+                query.created["$gte"] = filter.dateStart;
+            }
 
-            if (filter.dateEnd !== null)
-                query = query.find({"created": {"$lt": filter.dateEnd}});
+            if (filter.dateEnd) {
+                query.created = query.created || {};
+                query.created["$lt"] = filter.dateEnd;
+            }
 
         }
 
-        return await query.exec();
+        return await UserEvent.find(query).exec();
     }
 
     public async create (event: IUserEvent) : Promise<IUserEvent> {
