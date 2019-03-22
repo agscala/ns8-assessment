@@ -5,27 +5,11 @@ const router: Router = Router();
 import UserRepository from '../../repositories/UserRepository';
 import UserEventRepository from '../../repositories/UserEventRepository';
 
-router.post('/', async (req: Request, res: Response) => {
-    const user: IUser = await UserRepository.create({ name: req.body.name, password: req.body.password});
-    res.send(user);
-});
-
 router.get('/', async (req: Request, res: Response) => {
-    let { userId } = req.params;
-    const user = await UserEventRepository.getAll();
+    let { dateStart, dateEnd, userId } = req.query;
+    const events = await UserEventRepository.getAll({ dateStart, dateEnd, userId });
 
-    res.send(user);
-});
-
-router.post('/:userId/events', async (req: Request, res: Response) => {
-    let { userId } = req.params;
-
-    const userEvent = await UserEventRepository.create({
-        user: userId,
-        type: req.body.type,
-    });
-
-    res.send(userEvent);
+    res.send(events);
 });
 
 export const UserEventsController: Router = router;
