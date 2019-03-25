@@ -6,10 +6,15 @@ import UserRepository from '../../repositories/UserRepository';
 import UserEventRepository from '../../repositories/UserEventRepository';
 
 router.get('/', async (req: Request, res: Response) => {
-    let { dateStart, dateEnd, userId } = req.query;
-    const events = await UserEventRepository.getAll({ dateStart, dateEnd, userId });
+    try {
+        let { dateStart, dateEnd, userId } = req.query;
+        const events = await UserEventRepository.getAll({ dateStart, dateEnd, userId });
 
-    res.send(events);
+        res.send(events);
+    }
+    catch(e) {
+        res.send(e);
+    }
 });
 
 export const UserEventsController: Router = router;
