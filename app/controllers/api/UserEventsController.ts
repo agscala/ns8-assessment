@@ -1,8 +1,6 @@
-import { IUser } from '../../models/User';
 import { Router, Request, Response } from 'express';
 const router: Router = Router();
 
-import UserRepository from '../../repositories/UserRepository';
 import UserEventRepository from '../../repositories/UserEventRepository';
 
 router.get('/', async (req: Request, res: Response) => {
